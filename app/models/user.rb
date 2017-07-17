@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :resumes
   has_many :jobs
+  has_one :user_job, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   def client?
     role == "client"
@@ -15,6 +17,21 @@ class User < ActiveRecord::Base
 
   def candidate?
     role == "candidate"
+  end
+
+  def full_name
+    first_name+" "+last_name
+  end
+
+  
+  def self.salary_search_r params
+    if params == 30000.to_s
+      User.where(salary_expectation: (0.to_s)..(params.to_s))      
+    elsif params == 60000.to_s
+      User.where(salary_expectation: (0.to_s)..(params.to_s))
+    else
+      User.where(salary_expectation: (60000.to_s)..(User.maximum(:salary_expectation)))
+    end
   end
   
 end
