@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+nav{
+    height: 10%;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+nav.navbar.navbar-default {
+    background: #000;
+    margin-bottom: 0px;
+    border: none;
+}
+
+.navbar-form input[type="submit"] {
+    background: #4286f5;
+    border: 0px solid rgba(0,0,0,0);
+    color: #fff;
+    padding: 5px 11px;
+    border-radius: 0;
+}
+
+.navbar-nav>li {
+    padding: 8px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    background: #4286f5;
+    border: 0px solid rgba(0,0,0,0);
+    color: #fff;
+    padding: 5px 11px;
+    border-radius: 0;
+}
+
+.navbar-form {
+    padding: 0;
+    margin-top: -2px;
+}
+
+.navO{
+    height: 180px;
+}
+
+#signIn{
+    background: #00780f;
+    border-color: #00780f;
+}
+
+.rHead{
+    height: 180px;
+    background-color: #000;
+}
+
+.headerImg{
+    max-width: 680px;
+    height: 160px;
+    margin-left: -20px;
+}
+
+.mainSection{
+    height: 100%;
+    min-width: 100%;
+}
+
+/*.mainPg{
+    max-width: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('<%= asset_path('banner.jpg')%>');
+    background-size: cover;
+}
+*/
+.logo_txt{
+    width: 0px;
+}
+
+div.main{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding: 0;
+    color: #fff;
+}
+
+div.main h1{
+    font-family: open sans;
+    font-size: 45px;
+    font-weight: 300;
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+div.main p{
+    font-family: open sans;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.mainBtn{
+    background: #4286f5;
+    border: #4286f5;
+    border-radius: 0px;
+}
+
+.pages{
+    text-align: center;
+}
+
+.pages h1{
+    color: rgb(27,170,170);
+}
+
+.pages h3{
+    color: rgb(127,127,127);
+}
+
+.pages p{
+    color: #000;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+p.desc,p.desc1{
+    display: inline-block;
+    text-align: justify;
+    font-size: 16px;
+}
+
+p.desc1{
+    font-size: 18px;
+}
+
+p.mail {
+    font-size: 24px;
+    color: #4286f5;
+}
+
+span.mail{
+    font-size: 18px;
+    color: #4286f5;
+}
+
+.imagePl{
+    margin: 0 auto;
+    padding: 5px;
+    width: 100%;
+}
+
+.imagePl img{
+    margin: 0 auto;
+} 
+
+p.lomb{
+    font-size: 28px;
+    margin-left: -70px;
+}
+
+.footer{
+    max-height: 40px;
+    background-color: #4286f5;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+}
+
+.footer a{
+    color: #fff;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 1235px) {
+    .headerImg{
+        max-width: 500px;
+        height: 140px;
+        margin-left: -20px;
+    }
+
+    .rHead{
+        height: 160px;
+        background-color: #000;
+    }
+
+    .navO{
+        height: 160px;
+    }
+}
+
+@media only screen and (max-width: 1078px) {
+    .headerImg{
+        max-width: 400px;
+        height: 130px;
+        margin-left: -20px;
+    }
+
+    .rHead{
+        height: 150px;
+        background-color: #000;
+    }
+
+    .navO{
+        height: 150px;
+    }
+
+    .navI{
+        height: 150px;
+    }
+
+    .rigNav{
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .headerImg{
+        max-width: 350px;
+        height: 125px;
+        margin-left: -20px;
+    }
+
+    .rHead{
+        height: 145px;
+        background-color: #000;
+    }
+
+    .navO{
+        height: 145px;
+    }
+
+    .rigNav{
+        max-width: 405px;
+    }
+
+    .pages h1{
+        font-size: 34px;
+    }
+
+    .pages h3{
+        font-size: 20px;
+    }
+
+    .pages p{
+        color: #000;
+        font-size: 16px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+
+    p.desc{
+        display: inline-block;
+        text-align: justify;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse{
+        padding: 0;
+        border: none;
+        overflow: hidden;
+    }
+
+    .rigNav {
+        background: black;
+        position: relative;
+        z-index: 999;
+        margin: 0;
+        max-width: 600px;
+        margin-top: 90px;
+        padding: 0;
+        min-width: 100%;
+    }
+
+    div.main{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 150px;
+        margin-bottom: 200px;
+        padding: 0;
+        color: #fff;
+    }
+
+    .mainSection{
+        height: auto;
+    }
+
+    .pages h1{
+        font-size: 32px;
+    }
+
+    .pages h3{
+        font-size: 18px;
+    }
+
+    .pages p{
+        color: #000;
+        font-size: 15px;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+
+    .imagePl{
+        margin: 0 auto;
+        padding: 5px;
+        width: 70%;
+    }
+
+    p.desc{
+        display: inline-block;
+        text-align: justify;
+        font-size: 13px;
+    }
+
+    p.mail {
+        font-size: 24px;
+        color: #4286f5;
+    }
+
+    p.lomb{
+        font-size: 24px;
+        margin-left: 0px;
+    }
+
+    .footer{
+        background-color: #4286f5;
+        position: relative;
+        font-size: 10px;
+        text-align: center;
+        line-height: 16px;
+        color: #fff;
+    }
+
+    .footCol{
+        background-color: #4286f5;
+        padding: 5px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .rigNav {
+        margin-top: 30px;
+    }
+
+    .headerImg{
+        max-width: 200px;
+        height: 80px;
+        margin-left: -20px;
+    }
+
+    .rHead{
+        height: 100px;
+        background-color: #000;
+    }
+
+    .navO{
+        height: 100px;
+    }
+
+    .rigNav{
+        max-width: 600px;
+    }
+}

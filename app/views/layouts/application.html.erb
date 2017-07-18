@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Recruitment</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-
- 
-  <script>
+        <title>Recruitment</title>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <!-- <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css"> -->
+         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+         <!-- <link rel="stylesheet" type="text/css" href="/assets/css/style.css"> -->
+         <%= csrf_meta_tags %>
+        
+        <!-- <script type="text/javascript" src="/assets/js/jquery.min.js"></script> -->
+        <!-- <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script> -->
+        <!-- <script type="text/javascript" src="/assets/js/scripts.js"></script> -->
+        <%= stylesheet_link_tag    'application', media: 'all' %>
+        <%= javascript_include_tag 'application'%>
+        <%#= javascript_include_tag 'application' %>
+  
+        <body>
+            <%= render 'layouts/header'%>
+            <!-- <div class="container"> -->
+              <%= yield %>
+            <!-- </div> -->
+            <%= render 'layouts/footer'%>
+        </body>
+        </head>
+  </html>
+ <script>
   $(window).ready(function() {
  function showHeight( element, height ) {
-	$( ".banner" ).css("min-height" , height );
-	
-}	
+    $( ".banner" ).css("min-height" , height );
+    
+}   
 showHeight( "window", $( window ).height() );
 });
 
@@ -23,13 +38,3 @@ $("nav .form-group").click(function(){
 alert();
  $("nav").addClass("search_bg");
 });
-  </script>
-  </head>
-<body>
-<%= render 'layouts/header'%>
-<!-- <div class="container"> -->
-  <%= yield %>
-<!-- </div> -->
-<%= render 'layouts/footer'%>
-</body>
-</html>

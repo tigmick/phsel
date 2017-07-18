@@ -56,6 +56,9 @@ Rails.application.routes.draw do
   get 'about',:to => "welcome#about", :as => :about
   get 'privacy',:to => "welcome#privacy", :as => :privacy
   get 'contact',:to => "welcome#contact", :as => :contact
+  get 'exsearch',:to => "welcome#exsearch", :as => :exsearch
+  get 'platform',:to => "welcome#platform", :as => :platform
+  get 'policy',:to => "welcome#policy", :as => :policy
   get 'term_condition',:to => "welcome#term_condition", :as => :term_condition
   post 'welcome/search'
   match 'welcome/search', :to => "welcome#search", :as => :search, :via => [:get,:post]
@@ -65,6 +68,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
