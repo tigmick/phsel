@@ -13,77 +13,79 @@
          </a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-         <ul class="nav navbar-nav ">
+        <ul class="nav navbar-nav">
+
+         </ul> 
+         <ul class="nav navbar-nav navbar-right add_focus rigNav">
             <% if user_signed_in? %>
-            <% if current_user.candidate? %>
-            <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My CV <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><%= link_to "Candidate Resumes", resumes_path %></li>
-                  <li><%= link_to "Upload CV", new_resume_path %></li>
-                  <li role="separator" class="divider"></li>
-               </ul>
-            </li>
-            <% else %>
-            <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Jobs<span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><%= link_to "Create Job", new_job_path %></li>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "All Jobs", jobs_path %></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Delete Jobs</a></li>
-               </ul>
-            </li>
+                <% if current_user.candidate? %>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My CV <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><%= link_to "Candidate Resumes", resumes_path %></li>
+                        <li role="separator" class="divider"></li>
+                        <li><%= link_to "Upload CV", new_resume_path %></li>
+                        <li role="separator" class="divider"></li>
+                     </ul>
+                  </li>
+
+                  <li>
+                     <%= form_tag welcome_search_path, :method=> :post,:class=> "navbar-form navbar-left" do%>
+                        <div class="form-group">
+                        <%#= text_field_tag "search" ,nil,:class=>"form-control", :placeholder=>"Search Jobs"%>
+                        <%= select_tag "category", options_from_collection_for_select(Industry.all, "id", "title"),class: 'form-control',:prompt => 'Select Job Category'%> 
+                        <%= submit_tag "Search", :class=>"btn btn-default"%>
+                     </div>
+                     <% end %>
+                  </li>
+                  <% else %>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Jobs<span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><%= link_to "Create Job", new_job_path %></li>
+                        <li role="separator" class="divider"></li>
+                        <li><%= link_to "All Jobs", jobs_path %></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Delete Jobs</a></li>
+                     </ul>
+                  </li>
+               <% end %>
             <% end %>
-            <% end %>
-         </ul>
-         <% if user_signed_in? %>
-         <%if current_user.candidate? %>
-         <%#= form_tag welcome_search_path, :method=> :post,:class=>"navbar-form navbar-center" do%>
-         <div class="form-group">
-            <%#= text_field_tag "search" ,nil,:class=>"form-control", :placeholder=>"Search Jobs"%>
-            <%#= select_tag "category", options_from_collection_for_select(Industry.all, "id", "title"),class: 'form-control',:prompt => 'Select Job Category'%> 
-            <%#= submit_tag "Search", :class=>"btn btn-default"%>
-         </div>
-         <%# end %>
-         <% end %>
-         <%if current_user.client? %>
-         <%= form_tag search_candidate_path, :method=> :post,:id=>"form1",:class=>"navbar-form navbar-left" do%>
-         <div class="form-group">
-         <%= text_field_tag "search_candidate" ,nil,:class=>"form-control", :placeholder=>"Search Candidates"%>
-         <%= text_field_tag "location_search" ,nil,:class=>"form-control", :placeholder=>" Search Location  "%>
-         <%#= text_field_tag "salary_aearch" ,nil,:class=>"form-control", :placeholder=>" Search Salary"%>
-         <select class="form-control" name="salary_aearch" >
-            <option value="30000"> Less than 30000</option>
-            <option value="60000"> Less than 60000</option>
-            <option value="600001"> Higher than 60000</option>
-         </select>
-         <%= submit_tag "Search", :class=>"btn btn-default"%>
-         <!-- </div> -->
-         <% end %>
-         <%end%>
-         <% else %>
-         <%end%>
-         <ul class="nav navbar-nav navbar-right add_focus-rigNav">
+
             <% if !user_signed_in? %>
-            <li><%= link_to "SignUp For client", new_user_registration_path(role: 'client'), class: "btn btn-primary" %></li>
-            <li><%= link_to "SignUp For candidate", new_user_registration_path(role: 'candidate'), class: "btn btn-primary" %></li>
-            <li><%= link_to "Sign In",  new_user_session_path, class: "btn btn-primary",:id=>"signIn"%></li>
+               <li><%= link_to "SignUp For client", new_user_registration_path(role: 'client'), class: "btn btn-primary" %></li>
+               <li><%= link_to "SignUp For candidate", new_user_registration_path(role: 'candidate'), class: "btn btn-primary" %></li>
+               <li><%= link_to "Sign In",  new_user_session_path, class: "btn btn-primary",:id=>"signIn"%></li>
             <% else %>
-         
-            <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%> <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><a href="#"><%= current_user.email%></a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "Go to Dashboard", users_dashboard_path%>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "Edit",  edit_user_registration_path %></li>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-               </ul>
-            </li>
+               <%if current_user.client? %>
+                  <li>
+                     <%= form_tag search_candidate_path, :method=> :post, class: "navbar-form navbar-left"   do%>
+                        <div class="form-group">
+                           <%= text_field_tag "search_candidate" ,nil,:class=>"form-control", :placeholder=>"Search Candidates"%>
+                           <%= text_field_tag "location_search" ,nil,:class=>"form-control", :placeholder=>" Search Location  "%>
+                           <%#= text_field_tag "salary_aearch" ,nil,:class=>"form-control", :placeholder=>" Search Salary"%>
+                         <!--   <select class="form-control" name="salary_aearch" >
+                              <option value="30000"> Less than 30000</option>
+                              <option value="60000"> Less than 60000</option>
+                              <option value="600001"> Higher than 60000</option>
+                           </select> -->
+                           <%= submit_tag "Search", :class=>"btn btn-default"%>
+                        </div>
+                     <% end %>
+                  </li>
+               <%end%>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.try(:first_name)%> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="#"><%= current_user.email%></a></li>
+                     <li role="separator" class="divider"></li>
+                     <li><%= link_to "Go to Dashboard", users_dashboard_path%>
+                     <li role="separator" class="divider"></li>
+                     <li><%= link_to "Edit",  edit_user_registration_path %></li>
+                     <li role="separator" class="divider"></li>
+                     <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                  </ul>
+               </li>
            
             <% end %>
          </ul>
@@ -92,35 +94,3 @@
    </div>
    <!-- /.container-fluid -->
 </nav>
-<style type="text/css">
-   nav form.navbar-form.navbar-left{float:left !important;}
-   .header-form .form-control {
-   border-radius: 0;
-   height: 30px;
-   padding: 4px 11px;
-   }
-   .navbar-form input[type="submit"]{
-   background:#4286f5; 
-   border:0px solid rgba(0,0,0,0); 
-   color:#fff; 
-   padding:5px 11px;
-   border-radius: 0;
-   }
-   #signIn {
-   background: #00780f;
-   border-color: #00780f;
-   }
-   #form1 {
-   padding: 0;
-   margin-top: -40px;
-   margin-left: 520px;
-   }
-   .navbar-center
-{
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    margin: auto;
-}
-
-</style>
