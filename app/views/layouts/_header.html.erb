@@ -50,8 +50,18 @@
                      </ul>
                   </li>
                <% end %>
+               <%else%>
+                  <li>
+                     <%= form_tag welcome_search_path, :method=> :post,:class=> "navbar-form navbar-left" do%>
+                        <div class="form-group">
+                        <%#= text_field_tag "search" ,nil,:class=>"form-control", :placeholder=>"Search Jobs"%>
+                        <%= select_tag "category", options_from_collection_for_select(Industry.all, "id", "title"),class: 'form-control',:prompt => 'Select Job Category'%> 
+                        <%= submit_tag "Search", :class=>"btn btn-default"%>
+                     </div>
+                     <% end %>
+                  </li>
             <% end %>
-
+            
             <% if !user_signed_in? %>
                <li><%= link_to "SignUp For client", new_user_registration_path(role: 'client'), class: "btn btn-primary" %></li>
                <li><%= link_to "SignUp For candidate", new_user_registration_path(role: 'candidate'), class: "btn btn-primary" %></li>
